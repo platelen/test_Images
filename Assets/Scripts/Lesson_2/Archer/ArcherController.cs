@@ -9,6 +9,7 @@ namespace Lesson_2.Archer
 
         private float _gravityForce;
         private Vector3 _moveVector;
+        private bool _isAnimationPlaying;
 
         private CharacterController _characterController;
         private Animator _animator;
@@ -21,17 +22,37 @@ namespace Lesson_2.Archer
 
         private void Update()
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                _animator.SetBool("IsShoot", true);
+            }
+
             MovedCharacter();
             GravityGame();
+        }
+
+        public void ShootFinished()
+        {
+            _animator.SetBool("IsShoot", false);
         }
 
         private void MovedCharacter()
         {
             if (_characterController.isGrounded)
             {
+                _animator.SetBool("IsJumpRun", false);
                 _moveVector = Vector3.zero;
                 _moveVector.x = Input.GetAxis("Horizontal") * _speed;
                 _moveVector.z = Input.GetAxis("Vertical") * _speed;
+
+                if (_moveVector.x != 0 || _moveVector.z != 0)
+                {
+                    _animator.SetBool("IsRun", true);
+                }
+                else
+                {
+                    _animator.SetBool("IsRun", false);
+                }
 
                 RotatedCharacter();
             }
@@ -56,7 +77,10 @@ namespace Lesson_2.Archer
             else
                 _gravityForce = -1f;
             if (Input.GetKeyDown(KeyCode.Space) && _characterController.isGrounded)
+            {
                 _gravityForce = _jumpForce;
+                _animator.SetBool("IsJumpRun", true);
+            }
         }
     }
 }
