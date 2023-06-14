@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Lesson_2.Archer
@@ -6,10 +7,15 @@ namespace Lesson_2.Archer
     {
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpForce;
+        [SerializeField] private Transform _startSpawnParticle;
+        [SerializeField] private GameObject _particleCrack;
 
+
+        private readonly float _waitCoroutine = 0.5f;
         private float _gravityForce;
         private Vector3 _moveVector;
         private bool _isAnimationPlaying;
+        private bool _particleCrackSpawned = false;
 
         private CharacterController _characterController;
         private Animator _animator;
@@ -36,6 +42,17 @@ namespace Lesson_2.Archer
             _animator.SetBool("IsShoot", false);
         }
 
+
+        // TODO Изменить, чтобы спавнился один за раз.
+        private IEnumerator SpawnedParticlesCrack()
+        {
+            if (_particleCrackSpawned)
+            {
+                Instantiate(_particleCrack, _startSpawnParticle.position, _startSpawnParticle.rotation);
+                yield return new WaitForSeconds(_waitCoroutine);
+            }
+        }
+
         private void MovedCharacter()
         {
             if (_characterController.isGrounded)
@@ -47,11 +64,14 @@ namespace Lesson_2.Archer
 
                 if (_moveVector.x != 0 || _moveVector.z != 0)
                 {
+                    _particleCrackSpawned = true;
                     _animator.SetBool("IsRun", true);
+                    StartCoroutine(SpawnedParticlesCrack());
                 }
                 else
                 {
                     _animator.SetBool("IsRun", false);
+                    _particleCrackSpawned = false;
                 }
 
                 RotatedCharacter();
