@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Lesson_1.Button
 {
-    public class TestButtonClick : MonoBehaviour
+    public class LoadSceneViewImage : MonoBehaviour
     {
         [SerializeField] private UnityEngine.UI.Button _button;
 
@@ -18,7 +19,7 @@ namespace Lesson_1.Button
 
         private void TestedClick()
         {
-            Debug.Log("Click on me");
+            SceneManager.LoadScene(2);
         }
     }
 }
