@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace Lesson_1.ScrollView
 {
@@ -8,6 +10,7 @@ namespace Lesson_1.ScrollView
         [SerializeField] private Transform _scrollViewContent;
         [SerializeField] private GameObject _buttonGallery;
         [SerializeField] private List<Sprite> _spritesInButton;
+
 
         public List<Sprite> SpritesInButton
         {
