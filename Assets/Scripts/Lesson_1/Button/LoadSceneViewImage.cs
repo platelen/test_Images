@@ -19,7 +19,7 @@ namespace Lesson_1.Button
 
         private void TestedClick()
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene("ViewImage");
         }
     }
 }

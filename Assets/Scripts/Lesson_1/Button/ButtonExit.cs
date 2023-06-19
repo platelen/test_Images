@@ -19,7 +19,7 @@ namespace Lesson_1.Button
 
         private void ExitSceneView()
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("Gallery");
         }
     }
 }
