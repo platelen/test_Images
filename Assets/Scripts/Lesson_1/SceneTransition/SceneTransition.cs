@@ -38,8 +38,8 @@ namespace Lesson_1.SceneTransition
         {
             if (_loadingSceneOperation != null)
             {
-                _textPercentageLoading.text = Mathf.RoundToInt(_loadingSceneOperation.progress * 100) + "%";
-                _imageLoadingProgressBar.fillAmount = _loadingSceneOperation.progress;
+                _textPercentageLoading.text = Mathf.RoundToInt(_loadingSceneOperation.progress * 100) / 0.9f + "%";
+                _imageLoadingProgressBar.fillAmount = _loadingSceneOperation.progress / 0.9f;
             }
         }
 
