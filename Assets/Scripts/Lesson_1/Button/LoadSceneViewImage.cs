@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Lesson_1.Button
@@ -23,7 +22,7 @@ namespace Lesson_1.Button
         private void LoadViewScene()
         {
             GetImage();
-            SceneManager.LoadScene("ViewImage");
+            SceneTransition.SceneTransition.SwitchToScene("ViewImage");
         }
 
         private void GetImage()

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Lesson_1.Button
 {
@@ -19,7 +18,7 @@ namespace Lesson_1.Button
 
         private void ExitSceneView()
         {
-            SceneManager.LoadScene("Gallery");
+            SceneTransition.SceneTransition.SwitchToScene("Gallery");
         }
     }
 }
