@@ -58,7 +58,7 @@ namespace Lesson_1.DeviceСheck
 
         private void LoadScene(string sceneName)
         {
-            SceneManager.LoadScene(sceneName);
+            SceneTransition.SceneTransition.SwitchToScene(sceneName);
         }
     }
 }
